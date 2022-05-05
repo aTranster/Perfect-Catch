@@ -84,12 +84,13 @@ function App() {
       <div className="title">
         <img src="https://fontmeme.com/permalink/220505/76754d52f6629af5b6061defef4863d5.png" alt="pokemon-font" border="0" />
       </div>
+      <h3 className="header">Pick your favorite of two pokemon until only one is left!</h3>
       <div className="cards">
         <PokeCard data={pokemon1} handleClick={handleClick} />
         <div className="spacer" />
         <PokeCard data={pokemon2} handleClick={handleClick} />
       </div>
-      <h2>Remaining: {pokemonList.length}</h2>
+      <h3 className="remaining">Remaining: {pokemonList.length}</h3>
       <div className="top-poke">
         <Stack
           direction="row"
