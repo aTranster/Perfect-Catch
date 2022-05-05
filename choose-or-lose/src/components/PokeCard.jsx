@@ -1,10 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import '../css/App.css';
-// import Card from '@mui/material/Card';
-// import CardContent from '@mui/material/CardContent';
-// import CardMedia from '@mui/material/CardMedia';
-// import Typography from '@mui/material/Typography';
 import {
   Card,
   CardContent,
@@ -14,8 +9,6 @@ import {
   Chip,
   CardActionArea
 } from '@mui/material';
-// import { CardActionArea } from '@mui/material';
-// import { css, styled } from '@mui/system';
 
 const getBgByType = {
   bug: ['forest', 'DarkGreen'],
@@ -70,7 +63,7 @@ export default function PokeCard({ data }) {
                 ? (
                   <Chip
                     style={{
-                      backgroundColor: getBgByType[data.type2][1],
+                      backgroundColor: data.type2 ? getBgByType[data.type2][1] : '',
                       color: 'white'
                     }}
                     label={data.type2}

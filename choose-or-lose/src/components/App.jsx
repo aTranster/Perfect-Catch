@@ -4,11 +4,12 @@ import PokeCard from './PokeCard';
 
 function App() {
   const [pokeData, setData] = useState({});
+  const [pokemon1, setfirstPoke] = useState({});
+  const [pokemon2, setSecondPoke] = useState({});
 
   useEffect(() => {
     axios.get('http://localhost:3001/pokemon')
       .then((result) => {
-        console.log(result.data);
         setData(result.data);
       });
   }, []);
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className="cards">
       <PokeCard data={pokeData[0]} />
+      <PokeCard data={pokeData[1]} />
     </div>
   );
 }
