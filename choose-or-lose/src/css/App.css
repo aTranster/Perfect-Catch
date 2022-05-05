@@ -2,11 +2,19 @@ body {
   background-color: black;
 }
 
+h2 {
+  color: white
+}
+
+.title {
+  margin-top: 40px;
+}
+
 .cards {
   display: flex;
   justify-content: center;
   /* max-height: 60vh; */
-  margin-top: 20vh;
+  margin-top: 60px;
 }
 
 .spacer {
@@ -19,4 +27,9 @@ body {
 
 .MuiCardActionArea-root {
   height: 100%
+}
+
+.top-poke {
+  display: flex;
+  justify-content: center;
 }
