@@ -2,4 +2,9 @@
   display: flex;
   justify-content: center;
   /* max-height: 60vh; */
+  margin-top: 20vh;
+}
+
+.MuiCard-root:hover{
+  transform: scale(1.2);
 }
