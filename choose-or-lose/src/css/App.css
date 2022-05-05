@@ -1,11 +1,22 @@
+body {
+  background-color: black;
+}
+
 .cards {
   display: flex;
   justify-content: center;
-  justify-content: space-evenly;
   /* max-height: 60vh; */
   margin-top: 20vh;
 }
 
+.spacer {
+  margin: 60px;
+}
+
 .MuiCard-root:hover{
   transform: scale(1.2);
+}
+
+.MuiCardActionArea-root {
+  height: 100%
 }

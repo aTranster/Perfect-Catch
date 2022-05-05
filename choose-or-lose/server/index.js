@@ -60,7 +60,7 @@ app.get('/', (req, res) => {
   //           Pokemon.findOneAndUpdate({ id: poke.id }, {
   //             // type1: response.data.types[0].type.name,
   //             // type2: response.data.types[1] ? response.data.types[1].type.name : null,
-  //             sprite: response.data.sprites.versions['generation-v']['black-white'].animated.front_default
+  //             // sprite: response.data.sprites.versions['generation-v']['black-white'].animated.front_default
   //           }, (err, result) => {});
 
   //           // console.log(response.data.types[1] ? response.data.types[1].type.name : null)
