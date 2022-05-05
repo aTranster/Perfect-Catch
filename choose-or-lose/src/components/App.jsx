@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import PokeCard from './PokeCard';
 
-const maxPokemon = 107;
+const substitute = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/substitute.png';
 
 function randomIdx(array) {
   // const randIndex = Math.floor(Math.random() * array.length);
@@ -24,12 +24,6 @@ function App() {
   useEffect(() => {
     axios.get('http://localhost:3001/pokemon')
       .then((result) => {
-        // const list = {};
-        // let randIndex = Math.floor(Math.random() * (max - min) + min);
-        // result.data.forEach((pokemon) => {
-        //   list[pokemon.id] = pokemon;
-        // });
-        // setData(list);
         setData(result.data);
         setFirstPoke(result.data[randomIdx(result.data)]);
         setSecondPoke(result.data[randomIdx(result.data)]);
@@ -37,10 +31,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log(pokemonList.length);
-    if (pokemonList.length < 11 && pokemonList.length > 1) {
+    if (pokemonList.length < 10 && pokemonList.length > 1) {
       const newTop = top10;
-      setTop10(newTop.concat(pokemonList[0].sprite));
+      setTop10(newTop.concat(eliminated[eliminated.length - 1].sprite));
     }
   }, [eliminated]);
 
@@ -84,30 +77,38 @@ function App() {
       <div className="title">
         <img src="https://fontmeme.com/permalink/220505/76754d52f6629af5b6061defef4863d5.png" alt="pokemon-font" border="0" />
       </div>
-      <h3 className="header">Pick your favorite of two pokemon until only one is left!</h3>
+      {pokemonList.length > 1
+        ? <h3 className="header">Pick your favorite of two pokemon until only one is left!</h3>
+        : <h3 className="header">We've found your perfect match!!</h3>}
       <div className="cards">
         <PokeCard data={pokemon1} handleClick={handleClick} />
         <div className="spacer" />
         <PokeCard data={pokemon2} handleClick={handleClick} />
       </div>
-      <h3 className="remaining">Remaining: {pokemonList.length}</h3>
+      <h3 className="remaining">
+        Remaining:
+        {' '}
+        {`${pokemonList.length} `}
+        / 107
+      </h3>
       <div className="top-poke">
         <Stack
           direction="row"
           divider={<Divider orientation="vertical" flexItem />}
           spacing={2}
         >
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/substitute.png" alt="pokemon-sprite" />
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/substitute.png" alt="pokemon-sprite" />
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/substitute.png" alt="pokemon-sprite" />
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/substitute.png" alt="pokemon-sprite" />
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/substitute.png" alt="pokemon-sprite" />
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/substitute.png" alt="pokemon-sprite" />
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/substitute.png" alt="pokemon-sprite" />
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/substitute.png" alt="pokemon-sprite" />
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/substitute.png" alt="pokemon-sprite" />
+          <img src={pokemonList.length < 2 ? eliminated[eliminated.length - 1].sprite : substitute} alt="pokemon-sprite" />
+          <img src={top10.length > 7 ? top10[7] : substitute} alt="pokemon-sprite" />
+          <img src={top10.length > 6 ? top10[6] : substitute} alt="pokemon-sprite" />
+          <img src={top10.length > 5 ? top10[5] : substitute} alt="pokemon-sprite" />
+          <img src={top10.length > 4 ? top10[4] : substitute} alt="pokemon-sprite" />
+          <img src={top10.length > 3 ? top10[3] : substitute} alt="pokemon-sprite" />
+          <img src={top10.length > 2 ? top10[2] : substitute} alt="pokemon-sprite" />
+          <img src={top10.length > 1 ? top10[1] : substitute} alt="pokemon-sprite" />
+          <img src={top10.length > 0 ? top10[0] : substitute} alt="pokemon-sprite" />
         </Stack>
       </div>
+      <h3 className="top-poke">Top 2-9</h3>
     </div>
   );
 }
