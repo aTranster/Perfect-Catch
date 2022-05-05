@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PokeCard from './PokeCard';
 
@@ -8,7 +8,7 @@ function randomIdx(array) {
   // const randIndex = Math.floor(Math.random() * array.length);
   // return array.splice(randIndex, 1).id;
   return Math.floor(Math.random() * array.length);
-};
+}
 
 function App() {
   const [pokemonList, setData] = useState({});
@@ -34,7 +34,7 @@ function App() {
   const handleClick = (e, data) => {
     e.preventDefault();
     const list = pokemonList;
-    let elim = eliminated;
+    const elim = eliminated;
     if (data === pokemon1) {
       setEliminated(elim.concat(pokemon2));
       list.forEach((pokemon, index) => {
@@ -51,10 +51,9 @@ function App() {
         }
       });
       setData(list);
-
-      setFirstPoke(list[randomIdx(list)]);
-      setSecondPoke(list[randomIdx(list)]);
     }
+    setFirstPoke(list[randomIdx(list)]);
+    setSecondPoke(list[randomIdx(list)]);
   };
 
   return (

@@ -37,10 +37,10 @@ app.get('/', (req, res) => {
   // .then(result => {
 
   //   result.forEach((poke) => {
-  //     request(`https://pokeapi.co/api/v2/pokemon-species/${poke.id}/`)
+  //     axios.get(`https://pokeapi.co/api/v2/pokemon-species/${poke.id}/`)
   //     .then((response) => {
-  //       Pokemon.findOneAndUpdate({id: poke.id}, {
-  //         description: JSON.parse(response).flavor_text_entries[0].flavor_text
+  //       Pokemon.findOneAndUpdate({name: 'cherubi'}, {
+  //         description: "The small ball holds the nutrients needed for evolution. Apparently, it is very sweet and tasty."
   //       }, (err, result) => {
   //         if (err) {
   //           console.log(err)
@@ -52,6 +52,16 @@ app.get('/', (req, res) => {
   //   })
   // })
   // .then(() => res.sendStatus(201));
+
+  // Pokemon.findOneAndUpdate({ name: 'porygon-z' }, {
+  //   description: "Its programming was modified to enable work in alien dimensions. It did not work as planned."
+  // }, (err, result) => {
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  //   res.send(result);
+  // });
+
   // Pokemon.find({})
   //   .then((result) => {
   //     result.forEach((poke) => {
@@ -69,8 +79,8 @@ app.get('/', (req, res) => {
   //   })
   //   .then(() => res.sendStatus(200));
 
-  Pokemon.find({})
-    .then((result) => res.send(result));
+  // Pokemon.find({})
+  //   .then((result) => res.send(result));
 
   // Pokemon.deleteMany({})
   // .then(res.sendStatus(200));
