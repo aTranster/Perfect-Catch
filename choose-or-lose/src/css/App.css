@@ -4,6 +4,7 @@ body {
 
 h3.remaining {
   color: beige;
+  text-align: center;
 }
 
 h3.header {
@@ -13,6 +14,8 @@ h3.header {
 
 .title {
   margin-top: 40px;
+  display: flex;
+  justify-content: center;
 }
 
 .cards {

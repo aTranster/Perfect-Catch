@@ -4,6 +4,11 @@ import {
   Stack,
   Divider
 } from '@mui/material';
+import {
+  motion,
+  useMotionValue,
+  useTransform
+} from 'framer-motion';
 import PokeCard from './PokeCard';
 
 const substitute = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/substitute.png';
@@ -81,9 +86,17 @@ function App() {
         ? <h3 className="header">Pick your favorite of two pokemon until only one is left!</h3>
         : <h3 className="header">We've found your perfect match!!</h3>}
       <div className="cards">
-        <PokeCard data={pokemon1} handleClick={handleClick} />
+        <motion.div
+          whileTap={{ x: [0, -1000, 0], rotate: [0, -280, 0] }}
+        >
+          <PokeCard data={pokemon1} handleClick={handleClick} />
+        </motion.div>
         <div className="spacer" />
-        <PokeCard data={pokemon2} handleClick={handleClick} />
+        <motion.div
+          whileTap={{ x: [0, 1000, 0], rotate: [0, 280, 0] }}
+        >
+          <PokeCard data={pokemon2} handleClick={handleClick} />
+        </motion.div>
       </div>
       <h3 className="remaining">
         Remaining:
